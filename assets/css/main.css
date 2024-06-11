@@ -1,0 +1,438 @@
+:root{
+	--text-hover: #0b5eac;
+	--txt_a:#003d75;
+	--bs-accordion-active-bg: #f7f7f7;
+}
+.accordion .accordion-button:not(.collapsed) {
+	color: #fff;
+	background-color: #004f9f;
+	border-color: #004f9f;
+} 
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+}
+
+*{
+	letter-spacing:	normal;
+}
+body{
+	background-color: #ffffff;
+}
+
+/* *************************************************************************************************************************************** */
+                                                                    /* mmoraes */
+/* *************************************************************************************************************************************** */
+.sub-menu-1,
+.sub-menu-2{
+	display: none;
+	position: absolute;
+	z-index: 9;
+}
+.sub-menu-1{
+	position: absolute;
+    display: none;
+    z-index: 1000;
+    top: 40px;
+    left: 40%;
+    min-width: 250px;
+}
+.sub-menu-2{
+
+}
+.sub-menu-1 li {
+    color: #162947;
+	width: 100%;
+	display: block;
+    padding: 0 !important;
+    border-bottom: 1px solid #fff;
+    font-size: 13px;
+}
+.sub-menu-1 li a:hover{
+	background: #004F9F;
+	color: white;
+}
+
+#navbarTogglerDemo01 li:hover .sub-menu-1 {
+	display: block;
+    border-radius: 10px;
+    border: 1px solid #e4e4e4;
+	background: white;
+    box-shadow: 0px 5px 10px #0000002b;
+}
+.sub-menu-1 li:hover .sub-menu-2{
+    display: block;
+    background: white;
+    border-radius: 4px;
+	border: 1px solid #e4e4e4;
+	overflow: hidden;
+    color: #162947;
+    min-width: 100px;
+	box-shadow: 0px 5px 10px #0000002b;
+    left: 249px;
+    top: 40px;
+}
+.menu-principal-cards-identidade{
+	display: flex;
+    gap: 10px;
+	align-items: center;
+}
+.menu-principal-div{
+	width: 90%;
+}
+.search-submit{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+}
+.search-submit svg{
+	fill: #004F9F;
+}
+.search-field{
+	border: 0;
+	background: none;
+    width: 100%;
+	outline: 0;
+	height: 100%;
+}
+.search-form{
+	display: flex;
+    border: 1px solid #585858;
+    border-radius: 4px;
+    align-items: center;
+    height: 35px;
+	padding: 0 5px;
+}
+.search-content{
+	width: 12%;
+}
+/* serviços em destaque*/
+
+.servico-em-destaque-section {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
+	background: #dcdcdc;
+}
+
+.servico-em-destaque {
+    width: 305px;
+    height: 190px;
+    border: 2px solid #272727;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.servico-em-destaque p {
+	margin: 10px 0;
+}
+
+.servico-em-destaque a {
+	color: #0073aa;
+	text-decoration: none;
+}
+
+.servico-em-destaque a:hover {
+	text-decoration: underline;
+}
+.servico-em-destaque-section{
+	padding:50px 0;
+}
+.servico-em-destaque-content{
+	display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 20px;
+}
+.servico-btn-content{
+	margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.servico-em-destaque-button{
+	padding: 2px 15px;
+    background: whitesmoke;
+    border: 1px solid #747474;
+    border-radius: 5px;
+}
+
+/* *************************************************************************************************************************************** */
+                                                                    /* ancoras */
+/* *************************************************************************************************************************************** */
+a{
+	color:var(--txt_a);
+	text-decoration: none;
+	word-break: break-all;
+}
+
+a:hover {
+	color: var(--text-hover);
+}
+
+/* *************************************************************************************************************************************** */
+                                                                    /* header */
+/* *************************************************************************************************************************************** */
+.navbar{
+	justify-content: center;
+	padding: 0;
+}
+.nav-redes-sociais {
+	align-items: center;
+}
+
+#navbarNav{
+	text-transform: uppercase;
+	font-family: Roboto;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 18px;
+	text-align: left;
+	
+}
+.barra-governo-text a{
+	font-family: 'Roboto';
+	color:#004F9F;
+	padding-top: 14px;
+}
+
+header .banner{
+	background: #004F9F;
+    height: 96px;
+}
+.logo-cabecario-home {
+    img {
+        max-width: 228px;
+    }
+}
+.logo-cabecario-home {
+    float: left !important;
+    display: inline-block;
+}
+.sub-header {
+    float: right;
+}
+.nav-redes-sociais {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: right;
+    margin-top: 25px;
+}
+/*menu*/
+.identicade-secretaria {
+    border-right: #000000 1px solid;
+    font-weight: bold;
+    text-align: right;
+	padding-right: 10px;
+}
+.main-menu {
+    padding: 0;
+    z-index: 9999;
+}
+.main-menu ul {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 1px;
+}
+.menu-principal {
+    background: #ffffff;
+}
+.collapse:not(.show) {
+    display: inline;
+}
+
+.navbar-nav {
+	flex-direction: inherit
+}
+.containerTopo {
+	display: block;
+	background: var(--cor-barra-topo);
+	border-bottom: 3px solid var(--cor-linha-detalhe)
+}
+.menuTopo {
+	border-bottom: 3px solid var(--cor-linha-detalhe);
+	padding:3px 4px 6px;
+	/* margin: 0 50px; */
+}
+.menuTopo .row{
+	width: 100%;
+	margin: 0 auto;
+}
+.menu-principal-cards{
+	width: 100%;
+	display: flex;
+	align-items: center
+}
+
+/* *************************************************************************************************************************************** */
+                                                                    /* footer */
+/* *************************************************************************************************************************************** */
+
+
+footer {
+	display: block;
+	overflow: hidden;
+	padding: 0px;
+	margin-top: 50px;
+}
+
+footer ul {
+	display: block;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style: none
+}
+
+footer ul .rodapeMenuSefaz, 
+footer ul .rodapeMenuLinks, 
+footer ul .rodapeMenuSecretarias {
+	display: block;
+	overflow: hidden;
+	width: 276px;
+	float: left
+}
+
+.footer-widget-title, 
+footer ul li strong {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 10px;
+	color: var(--txt_a);
+	font-size: 14px;
+	font-family: 'Titillium Web', sans-serif
+}
+
+.footer-widget-title {
+	font-weight: 700;
+	text-transform: uppercase
+}
+
+footer .textwidget {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 5px;
+	color: var(--cinza);
+	font-size: 14px;
+	font-family: 'Titillium Web', sans-serif
+}
+
+footer ul li a {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 5px;
+	color: var(--cinza);
+	font-size: 14px;
+	font-family: 'Titillium Web', sans-serif;
+	text-decoration: none
+}
+
+footer ul li a:hover {
+	color: var(--txt_a)
+}
+
+footer .rodapeBg {
+	display: block;
+	overflow: hidden;
+	height: 60px;
+	width: 100%;
+	margin-top: 75px;
+	background: var(--cor-barra-topo)
+}
+
+footer .rodapeBg img {
+	display: block;
+	overflow: hidden;
+	margin-top: 12px
+}
+.barra-rodape{
+    background-color: #004f9f;
+}
+#barra-rodape div  p{
+    color: #ffffff !important;
+}
+.footer_custon_logo img{
+	width: 100%;
+	height: 100px;
+}
+
+.footer-conteudo{
+	min-height: 200px;
+	height: auto;
+}
+.barra-rodape p{
+	margin-bottom: 0px;
+}
+
+/* Estilos gerais para o menu */
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav > li {
+    position: relative;
+    display: inline-block;
+}
+
+.nav a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+/* Estilos para os submenus */
+.sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sub-menu li {
+    display: block;
+}
+
+/* Mostra o submenu quando o item de menu pai é hover */
+.nav > li:hover > .sub-menu {
+    display: block;
+}
+
+/* Estilos para sub-submenus (terceiro nível) */
+.sub-menu .sub-menu {
+    left: 100%;
+    top: 0;
+}
+
+/* *************************************************************************************************************************************** */
+														/* banner-campanha governo*/
+
+/* *************************************************************************************************************************************** */
+
+
+.slick-banner-slider {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .slick-banner-slider .banner {
+    padding: 10px;
+  }
+
+  .slick-banner-slider .banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }

@@ -1,0 +1,41 @@
+
+.wp-block-my-theme-my-block .my-block-item h2 {
+    margin-bottom: 10px;
+}
+.wp-block-my-theme-my-block .my-block-item img {
+    width: 100px;
+    height: 200px;
+    display: block;
+    margin-top: 10px;
+}
+
+
+.wp-block-my-theme-my-block .my-block-item img{
+    margin-top: 0 !important;
+}
+.custom-block-item .components-button{
+    margin-right: 10px;
+    padding: 0;
+    height: auto;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.wp-block-my-theme-my-block .custom-block-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.wp-block-my-theme-my-block .btn-remove-item{
+    background-color: #f00;
+    color: #ffffff !important;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
