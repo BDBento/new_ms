@@ -4,21 +4,7 @@ include(TEMPLATEPATH . '/theme-functions/carrossel_register.php');
 include(TEMPLATEPATH . '/theme-functions/seguranca.php');
 include(TEMPLATEPATH . '/theme-functions/nav-walker.php');
 include(TEMPLATEPATH . '/theme-functions/taxonomia/servoco_em _destaque.php');
-
-
-function enqueue_slick_scripts()
-{
-    // Registrar e incluir o arquivo CSS do Slick Slider
-    wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
-    wp_enqueue_style('slick-theme-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
-
-    // Registrar e incluir o arquivo JavaScript do Slick Slider
-    wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array('jquery'), null, true);
-
-    // Registrar e incluir o arquivo de inicialização do Slick Slider
-    wp_enqueue_script('mytheme-slick-init', get_template_directory_uri() . '/js/slick-init.js', array('jquery', 'slick-js'), null, true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_slick_scripts');
+include(TEMPLATEPATH . '/theme-functions/function_a_secretaria.php');
 
 
 function add_theme_scripts()
@@ -26,7 +12,7 @@ function add_theme_scripts()
 
     wp_enqueue_script('jquery_js', get_template_directory_uri() . '/assets/js/jquery.js', array('jquery'), '3.6.0', true);
 
-    wp_enqueue_script('bootstrap-1', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_script('bootstrap-1', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), time(), true);
 
     wp_enqueue_script('pooer', get_template_directory_uri() . '/assets/js/popper.min.js', array('jquery'), '1.0.0', true);
 }
@@ -59,54 +45,7 @@ function wpbr_home_settings($wp_customize)
         'title' => 'Selecione as areas de exibição',
         'priority' => 10,
     ));
-    $wp_customize->add_setting('servicos-destaque', array(
-        'default' => true,
-    ));
-    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'servicos-destaque', array(
-        'label' => 'Serviços em Destaque',
-        'section' => 'home_settings',
-        'settings' => 'servicos-destaque',
-        'type' => 'checkbox',
-    )));
-
-    $wp_customize->add_setting('destaques-do-orgao', array(
-        'default' => true,
-    ));
-    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'destaques-do-orgao', array(
-        'label' => 'Destaques do Orgão',
-        'section' => 'home_settings',
-        'settings' => 'destaques-do-orgao',
-        'type' => 'checkbox',
-    )));
-    $wp_customize->add_setting('destaques-do-orgao2', array(
-        'default' => false,
-    ));
- 
-    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'destaques-do-orgao2', array(
-        'label' => 'Destaques do Orgão 2',
-        'section' => 'home_settings',
-        'settings' => 'destaques-do-orgao2',
-        'type' => 'checkbox',
-    )));
-
-    $wp_customize->add_setting('instituicoes', array(
-        'default' => true,
-    ));
-    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'instituicoes', array(
-        'label' => 'Instituições relacionadas',
-        'section' => 'home_settings',
-        'settings' => 'instituicoes',
-        'type' => 'checkbox',
-    )));
-    $wp_customize->add_setting('area-edicao', array(
-        'default' => true,
-    ));
-    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'area-edicao', array(
-        'label' => 'Área de Edição',
-        'section' => 'home_settings',
-        'settings' => 'area-edicao',
-        'type' => 'checkbox',
-    )));
+    
 }
 add_action('customize_register', 'wpbr_home_settings');
 
@@ -134,15 +73,7 @@ if (function_exists('register_sidebar')) {
         'before_title' => '<h3>',
         'after_title' => '</h3>',
     ));
-    register_sidebar(array(
-        'name' => __('destaques do orgao2'),
-        'id' => 'destaques-do-orgao2',
-        'description' => __('Destaque do Orgão '),
-        'before_widget' => '<div class="home-apresentacao">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>',
-    ));
+   
     register_sidebar(array(
         'name' => __('instituicoes'),
         'id' => 'instituicoes',
@@ -156,7 +87,7 @@ if (function_exists('register_sidebar')) {
         'name' => __('area-edicao'),
         'id' => 'area-edicao',
         'description' => __('Área de Edição'),
-        'before_widget' => '<div class="area-edicao">',
+        'before_widget' => '<div class="area-edicao-content">', // edited mmoraes************************************************ <div class="area-edicao">
         'after_widget' => '</div>',
         'before_title' => '<h3>',
         'after_title' => '</h3>',
@@ -360,3 +291,162 @@ function my_theme_register_block() {
 add_action('enqueue_block_editor_assets', 'my_theme_register_block');
 add_action('wp_enqueue_scripts', 'my_theme_register_block');
 
+
+
+
+
+// Filtro para definir o comprimento do excerpt
+function custom_excerpt_length($length) {
+    return 15; // Define o número de palavras
+}
+add_filter('excerpt_length', 'custom_excerpt_length');
+
+// Filtro para modificar o final do excerpt
+function custom_excerpt_more($more) {
+    return '...'; // Define o sufixo do excerpt
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
+
+
+
+
+function remover_estilos_admin_do_frontend() {
+    if (!is_admin()) {
+        wp_dequeue_style('common'); // Remove o estilo "common.min.css" do front-end
+    }
+}
+add_action('wp_enqueue_scripts', 'remover_estilos_admin_do_frontend', 100);
+
+
+
+
+// -------------------------------------------------------------------------------------------------------- mmoraes
+
+function footer_widget() {
+    register_sidebar( array(
+        'name'          => __( 'Widget Footer' ),
+        'id'            => 'footer-widgets',
+        'description'   => __( 'Adicione widgets aqui para aparecer no footer.'),
+        'before_widget' => '<div id="%1$s" class="footer-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h4 class="footer-widget-title">',
+        'after_title'   => '</h4>',
+    ) );
+}
+add_action( 'widgets_init', 'footer_widget' );
+
+
+
+function adicionar_menu_ordem_cronologica() {
+    add_menu_page(
+        'Ordem Cronológica de Pagamentos', // Título da página
+        'Barra cinza obrigatoriedades',              // Texto do menu
+        'manage_options',                   // Capacidade
+        'ordem-cronologica-pagamentos',     // Slug do menu
+        'renderizar_ordem_cronologica',     // Função de callback
+        'dashicons-admin-generic',          // Ícone do menu
+        6                                   // Posição no menu
+    );
+}
+
+add_action('admin_menu', 'adicionar_menu_ordem_cronologica');
+
+
+function footer_widget_customizer( $wp_customize ) {
+
+    // Adicionar seção de Footer no Customizer
+    $wp_customize->add_section( 'footer_section' , array(
+        'title'      => __( 'Footer Settings'),
+        'priority'   => 30,
+    ) );
+
+    // Adicionar configuração para o texto do footer
+    $wp_customize->add_setting( 'footer_text', array(
+        'default'   => __( 'Texto do Footer'),
+        'transport' => 'refresh',
+        'sanitize_callback' => 'wp_kses_post',
+    ) );
+
+    // Adicionar controle de texto
+    $wp_customize->add_control( new WP_Customize_Control(
+        $wp_customize,
+        'footer_text',
+        array(
+            'label'      => __( 'Texto do Footer'),
+            'section'    => 'footer_section',
+            'settings'   => 'footer_text',
+            'type'       => 'textarea',
+        )
+    ) );
+
+}
+add_action( 'customize_register', 'footer_widget_customizer' );
+
+
+
+function renderizar_ordem_cronologica() {
+    ?>
+    <div class="wrap">
+        <h1>Ordem Cronológica de Pagamentos</h1>
+
+        <!-- Formulário para upload de arquivo -->
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="arquivo_pagamentos" />
+            <input type="submit" name="enviar_arquivo" value="Upload" class="button button-primary" />
+        </form>
+
+        <?php
+        if (isset($_POST['enviar_arquivo'])) {
+            if (!empty($_FILES['arquivo_pagamentos']['name'])) {
+                // Processar o upload do arquivo
+                $arquivo = $_FILES['arquivo_pagamentos'];
+
+                // Verificar se o upload foi bem-sucedido
+                if ($arquivo['error'] == 0) {
+                    // Caminho do upload no servidor
+                    $upload_dir = wp_upload_dir();
+                    $upload_path = $upload_dir['path'] . '/' . basename($arquivo['name']);
+
+                    // Mover o arquivo para o diretório de uploads
+                    if (move_uploaded_file($arquivo['tmp_name'], $upload_path)) {
+                        $file_url = $upload_dir['url'] . '/' . basename($arquivo['name']);
+                        update_option('arquivo_pagamentos_url', $file_url);
+                        echo '<p>Arquivo enviado com sucesso!</p>';
+                    } else {
+                        echo '<p>Erro ao enviar o arquivo.</p>';
+                    }
+                } else {
+                    echo '<p>Erro no upload do arquivo.</p>';
+                }
+            } else {
+                // Se nenhum arquivo for enviado, remover a opção armazenada
+                delete_option('arquivo_pagamentos_url');
+                echo '<p>Arquivo removido com sucesso!</p>';
+            }
+        }
+        ?>
+
+        <!-- Formulário separado para o campo Link para LGPD -->
+        <h2>Link para LGPD</h2>
+        <form method="post">
+            <input type="text" name="link_lgpd" placeholder="Link para LGPD" value="<?php echo esc_attr(get_option('link_lgpd')); ?>" />
+            <input type="submit" name="salvar_link_lgpd" value="Salvar Link" class="button button-primary" />
+        </form>
+
+        <?php
+        if (isset($_POST['salvar_link_lgpd'])) {
+            if (!empty($_POST['link_lgpd'])) {
+                // Processar o link para LGPD
+                $link_lgpd = sanitize_text_field($_POST['link_lgpd']);
+                update_option('link_lgpd', $link_lgpd);
+                echo '<p>Link para LGPD salvo com sucesso!</p>';
+            } else {
+                // Se o campo estiver vazio, remover a opção armazenada
+                delete_option('link_lgpd');
+                echo '<p>Link para LGPD removido com sucesso!</p>';
+            }
+        }
+        ?>
+    </div>
+    <?php
+}

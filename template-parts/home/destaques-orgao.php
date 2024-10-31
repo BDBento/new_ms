@@ -88,7 +88,7 @@ $destaques = new WP_Query($args);
                         <div class="home-apresentacao-card-2">
                             <?php the_post_thumbnail(); ?>
                             <div class="position-relative">
-                                <?php the_category(",", ","); ?>
+                                <?php the_category(" ", ","); ?>
                             </div>
                         </div>
                     </div>
@@ -133,134 +133,7 @@ $destaques = new WP_Query($args);
         </div>
     </div>
 </div>
-</div>
+
 <?php
 
 ?>
-<style>
-    .home-apresentacao {
-        border: 1px solid #9b9b9b;
-        border-radius: 5px;
-        height: 100%;
-        display: grid;
-    }
-
-    .home-apresentacao img {
-        width: 100%;
-        height: auto;
-        border-radius: 5px 5px 0 0;
-    }
-
-    .home-apresentacao h4 {
-        font-size: 18px;
-        font-weight: 700;
-    }
-
-    .Destaque-content {
-        padding: 10px 25px;
-    }
-
-    .info-post-destaque {
-        display: flex;
-        justify-content: space-between;
-        height: 25px;
-        align-self: end;
-    }
-
-    .info-post-destaque .botao {
-        margin-right: 20px;
-        font-size: 17px;
-        font-weight: 500;
-        color: black;
-        text-decoration: underline;
-    }
-
-    .info-post-destaque a:first-child {
-        font-size: 12px;
-        font-weight: 600;
-        color: black;
-        background: #dddddd;
-        padding: 2px;
-        border-radius: 5px;
-    }
-
-    .home-apresentacao-destaque-grande {
-        row-gap: 10px;
-        margin: 0;
-        padding: 0 5px;
-    }
-
-    .home-apresentacao-destaque-grande .col-md-6 {
-        padding: 0 5px;
-    }
-
-    /* card pequeno */
-
-    .home-apresentacao-card-2,
-    .redes-sociais {
-        border: 1px solid #9b9b9b;
-        border-radius: 5px;
-        height: 100%;
-    }
-
-    .home-apresentacao-card-2 img {
-        width: 100%;
-        height: auto;
-    }
-
-    .home-apresentacao-card-2 a {
-        position: absolute;
-        z-index: 9;
-        bottom: 0px;
-        font-size: 12px;
-        font-weight: 600;
-        color: black;
-        background: white;
-        padding: 2px;
-        border-radius: 5px;
-    }
-
-    .home-apresentacao-destaque-pequeno {
-        row-gap: 10px;
-        margin: 0;
-        padding: 0 5px;
-    }
-
-    .apresentacao-pequeno-itens {
-        margin: 0;
-        padding: 0 5px;
-    }
-
-    /* Redes sociais */
-
-    .redes-sociais {
-        padding: 10px 33px 0;
-    }
-
-    .redes-sociais h3 {
-        font-size: 20px;
-        text-align: start;
-        margin: 0;
-    }
-
-    .redes-sociais .bi {
-        font-size: 30px;
-        color: black;
-    }
-
-    .redes-sociais .bg-redes-sociais {
-        background: #dddddd;
-        margin: 10px;
-        border-radius: 5px;
-        width: 50px;
-        height: 50px;
-        display: grid;
-        justify-content: center;
-        align-content: center;
-    }
-
-    .redes-grid {
-        justify-content: space-between;
-        padding: 0 45px;
-    }
-</style>

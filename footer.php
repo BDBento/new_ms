@@ -1,57 +1,95 @@
-<footer class="footer-card">
+<div class="barra-foter-cinzenta">
+    <div class="container d-flex justify-content-between">
 
-    <div class="barra-rodape" id="barra-rodape">
+        <div class="footer_link">
+            <?php
+            $link_lgpd = get_option('link_lgpd');
+            if ($link_lgpd && !empty($link_lgpd)) {
+                echo '<a href="' . esc_url($link_lgpd) . '">LGPD</a>';
+            } else {
+                echo '<a href="https://www.lgpd.ms.gov.br/">LGPD</a>';
+            }
+            ?>
+        </div>
+        <div class="footer_link"><a href="https://www.canaldedenuncia.ms.gov.br/">Fala Servidor</a> </div>
+        <div class="footer_link"><a href="https://www.ms.gov.br/pagina/acessibilidade6563">Acessibilidade</a></div>
+
+        <?php
+        $file_url = get_option('arquivo_pagamentos_url');
+
+        if ($file_url) {
+            echo ' <div class="footer_link link_orden"><a href="' . esc_url($file_url) . '" download>Ordem Cronológica de Pagamentos</a></div>';
+        } else {
+        }
+        ?>
+
+    </div>
+</div>
+
+<footer>
+
+
+
+    <div class="container widgets-rodape acao-baixo-cima">
+        <div class="footer">
+            <?php get_sidebar('footer'); ?>
+        </div>
+    </div>
+    <div class="barra-rodape">
         <div class="container">
-            <div class="row d-flex justify-content-between" style="padding-top: 12px; padding-bottom: 12px; align-items: center">
+            <div class="row d-flex justify-content-between" style="padding-top: 12px; padding-bottom: 12px;color:#fff">
                 <div class="col">
-                    <p style="color: #ffffff;">Sistemas Mato Grosso do Sul</p>
+                    <p>SETDIG | Secretaria-Executiva de Transformação Digital</p>
                 </div>
                 <div class="col">
-                    <img style="float: inline-end;" src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-branca.png" alt="Governo de MS" >
+                    <p class="text-end"> </p>
                 </div>
-
             </div>
         </div>
     </div>
 </footer>
-
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
+        <div class="vw-plugin-top-wrapper"></div>
     </div>
 </div>
 
-
-
-
-    <!--------------------------------V-libras----------------------------------->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
-
-    <script async src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-
-    <script async>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
-    <!-------------------------------/V-libras----------------------------------->
-    <!--------------------------------Userway------------------------------------>
-
-    <script async data-account="n4LcBHs32d" src="https://cdn.userway.org/widget.js"></script>
-
-    <!--------------------------------/Userway----------------------------------->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-
 <?php
+function fcms_menu()
+{ ?>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#menuBtn').click(function () {
+                $(this).hasClass("ativo") ? ($(this).removeClass("ativo"), $("#menu-header").slideUp()) : ($(this).addClass("ativo"), $("#menu-header").slideDown())
+            });
+        });
+    </script>
+<?php }
+
+add_action('wp_footer', 'fcms_menu', 70);
+
+?>
+<!-- Acessibilidade  -->
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+<script defer>
+    (function (d) {
+        var s = d.createElement("script");
+        s.setAttribute("data-account", "n4LcBHs32d");
+        s.setAttribute("src", "https://cdn.userway.org/widget.js");
+        (d.body || d.head).appendChild(s);
+    })(document)
+</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website
+        accessibility</a></noscript>
+<!-- Acessibilidade  -->
+<?php
+
+
 wp_footer(); ?>
 
-
-
 </body>
-        
+
 </html>

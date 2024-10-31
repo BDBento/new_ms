@@ -9,3 +9,9 @@
         </div>
     </div>
 </section>
+
+<style>
+    .area-edicao{
+        padding: 50px 0;
+    }
+</style>
